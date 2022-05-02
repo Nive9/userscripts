@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reddit Unhide Hidden Posts
 // @namespace    https://github.com/Nive9/userscripts
-// @version      1.0.2
+// @version      1.0.3
 // @description  Unhides all hidden posts when visiting https://np.reddit.com/user/USERNAME/hidden/ (USERNAME = logged in user's name)
 // @author       Nive
 // @downloadURL  https://raw.githubusercontent.com/Nive9/userscripts/reddit-unhide-hidden-posts/main/reddit-unhide.user.js
