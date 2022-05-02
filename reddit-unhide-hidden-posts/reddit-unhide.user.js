@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reddit Unhide Hidden Posts
 // @namespace    https://github.com/Nive9/userscripts/blob/main/reddit-unhide-hidden-posts/reddit-unhide.user.js
-// @version      1.2.0
+// @version      2.0.0
 // @description  Unhides all hidden posts when visiting https://np.reddit.com/user/USERNAME/hidden/ (USERNAME = logged in user's name)
 // @author       Nive
 // @downloadURL  https://raw.githubusercontent.com/Nive9/userscripts/reddit-unhide-hidden-posts/main/reddit-unhide.user.js
@@ -11,15 +11,19 @@
 // ==/UserScript==
 
 function unhide () {
-    const classUnhideExists = document.getElementsByClassName('unhide-button').length > 0;
+    // const classUnhideExists = document.getElementsByClassName('unhide-button').length > 0;
     const classNextBtnExists = document.getElementsByClassName('next-button').length > 0;
 
-    while (classNextBtnExists && classUnhideExists) {
-            Array.from({ length: 25 }, () => {$('.unhide-button a')[0].click()});
-            setTimeout(function(){
-                (location.reload());
-            }, 3000);
-        }
+        setInterval(
+            function() {$('.unhide-button a')[0].click();
+                       }, 750);
+
+
+        setTimeout(function(){
+            if(classNextBtnExists) {
+            (location.reload());
+            }
+        }, 20000);
 }
 
 unhide();
