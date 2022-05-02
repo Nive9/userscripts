@@ -18,7 +18,7 @@ function unhide () {
             Array.from({ length: 25 }, () => {$('.unhide-button a')[0].click()});
             setTimeout(function(){
                 (location.reload());
-            }, 500);
+            }, 3000);
         }
 }
 
