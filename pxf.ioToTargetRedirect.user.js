@@ -2,8 +2,8 @@
 // @name                pxf.io Links to Target URL Redirect
 // @description         Redirect pxf.io links to target URL
 // @version             1.0
-// @downloadURL         https://github.com/yourusername/userscripts/raw/main/pxf.ioToTargetRedirect.user.js
-// @updateURL           https://github.com/yourusername/userscripts/raw/main/pxf.ioToTargetRedirect.user.js
+// @downloadURL         https://raw.githubusercontent.com/Nive9/userscripts/main/pxf.ioToTargetRedirect.user.js
+// @updateURL           https://raw.githubusercontent.com/Nive9/userscripts/main/pxf.ioToTargetRedirect.user.js
 // @icon                https://www.pixiv.net/favicon.ico
 // @match               *://*.pxf.io/*
 // @run-at              document-start
