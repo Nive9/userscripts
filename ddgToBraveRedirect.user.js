@@ -2,8 +2,9 @@
 // @name                DuckDuckGo to Brave Search Redirect
 // @description         Redirect DuckDuckGo searches to Brave Search
 // @version             1.0
-// @downloadURL         https://github.com/Nive9/userscripts/raw/refs/heads/main/ddgToBraveRedirect.user.js
-// @updateURL           https://github.com/Nive9/userscripts/raw/refs/heads/main/ddgToBraveRedirect.user.js
+// @downloadURL         https://raw.githubusercontent.com/yourusername/yourrepo/main/ddgToBraveRedirect.user.js
+// @updateURL           https://raw.githubusercontent.com/yourusername/yourrepo/main/ddgToBraveRedirect.user.js
+// @icon                https://search.brave.com/favicon.ico
 // @match               *://*.duckduckgo.com/*
 // @run-at              document-start
 // ==/UserScript==

@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Amazon Archive Button
-// @version      1.3.2
+// @version      1.3.3
 // @description  Restores the archive button on the order page
 // @author       Nive9
-// @downloadURL  https://github.com/Nive9/userscripts/raw/refs/heads/main/amazonArchiveButton.user.js
-// @updateURL    https://github.com/Nive9/userscripts/raw/refs/heads/main/amazonArchiveButton.user.js
+// @downloadURL  https://raw.githubusercontent.com/Nive9/userscripts/main/amazonArchiveButton.user.js
+// @updateURL    https://raw.githubusercontent.com/Nive9/userscripts/main/amazonArchiveButton.user.js
+// @icon         https://www.amazon.com/favicon.ico
 // @match        *://*.amazon.de/*
 // @match        *://*.amazon.fr/*
 // @match        *://*.amazon.it/*
