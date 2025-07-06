@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name                pxf.io Links to Target URL Redirect
 // @description         Redirect pxf.io links to target URL
+// @version             1.0
 // @downloadURL         https://github.com/Nive9/userscripts/raw/refs/heads/main/pxf.ioToTargetRedirect.user.js
 // @updateURL           https://github.com/Nive9/userscripts/raw/refs/heads/main/pxf.ioToTargetRedirect.user.js
 // @match               *://*.pxf.io/*
