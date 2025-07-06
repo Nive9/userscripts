@@ -15,11 +15,11 @@ Adds an "Archive" button to Amazon order pages, restoring the original archive b
 
 Automatically redirects DuckDuckGo search queries to Brave Search for enhanced privacy and results.
 
-[Install Duckduckgo to Brave Redirect](https://raw.githubusercontent.com/Nive9/userscripts/main/duckduckgo-to-brave-redirect.user.js)
+[Install Duckduckgo to Brave Redirect](https://raw.githubusercontent.com/Nive9/userscripts/main/ddgToBraveRedirect.user.js)
 
 
 ## pxf.io to Pixiv Redirect
 
 Redirects shortened pxf.io links to their full Pixiv URLs for easier access to original content.
 
-[Install pxf.io to Pixiv Redirect](https://raw.githubusercontent.com/Nive9/userscripts/main/pxfio-pixiv-redirect.user.js)
+[Install pxf.io to Pixiv Redirect](https://raw.githubusercontent.com/Nive9/userscripts/main/pxf.ioToTargetRedirect.user.js)
