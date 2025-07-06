@@ -1,6 +1,8 @@
 # userscripts
 
 [![CodeFactor](https://www.codefactor.io/repository/github/nive9/userscripts/badge/main)](https://www.codefactor.io/repository/github/nive9/userscripts/overview/main)
+[![Issues](https://img.shields.io/github/issues/Nive9/userscripts)](https://github.com/Nive9/userscripts/issues)
+
 
 ## Amazon Archive Button
 
