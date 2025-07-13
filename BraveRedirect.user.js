@@ -4,16 +4,16 @@
 // @version             1.3
 // @downloadURL         https://raw.githubusercontent.com/Nive9/userscripts/main/SearchEngineRedirect.user.js
 // @updateURL           https://raw.githubusercontent.com/Nive9/userscripts/main/SearchEngineRedirect.user.js
-// @icon                https://search.brave.com/favicon.ico
-// @match               *://*.duckduckgo.com/*
+// @icon                https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg
 // @match               *://*.bing.com/*
-// @match               *://*.google.com/*
-// @match               *://*.yahoo.com/*
-// @match               *://*.startpage.com/*
-// @match               *://*.ecosia.org/*
-// @match               *://*.qwant.com/*
-// @match               *://*.yandex.com/*
 // @match               *://*.brave.com/*
+// @match               *://*.duckduckgo.com/*
+// @match               *://*.ecosia.org/*
+// @match               *://*.google.com/*
+// @match               *://*.qwant.com/*
+// @match               *://*.startpage.com/*
+// @match               *://*.yahoo.com/*
+// @match               *://*.yandex.com/*
 // @run-at              document-start
 // @grant               GM_getValue
 // @grant               GM_setValue
@@ -31,34 +31,61 @@ function toggleEngine(key, name, def) {
 }
 
 const engineList = [
+    { key: "Bing", name: "Bing", def: true, host: "bing.com", param: "q" },
     { key: "Brave", name: "Brave Search", def: true, host: "search.brave.com", param: "q" },
     { key: "DuckDuckGo", name: "DuckDuckGo", def: false, host: "duckduckgo.com", param: "q" },
-    { key: "Bing", name: "Bing", def: true, host: "bing.com", param: "q" },
-    { key: "Google", name: "Google", def: true, host: "google.com", param: "q" },
-    { key: "Yahoo", name: "Yahoo", def: true, host: "yahoo.com", param: "p" },
-    { key: "Startpage", name: "Startpage", def: false, host: "startpage.com", param: "query" },
     { key: "Ecosia", name: "Ecosia", def: true, host: "ecosia.org", param: "q" },
+    { key: "Google", name: "Google", def: true, host: "google.com", param: "q" },
     { key: "Qwant", name: "Qwant", def: true, host: "qwant.com", param: "q" },
+    { key: "Startpage", name: "Startpage", def: false, host: "startpage.com", param: "query" },
+    { key: "Yahoo", name: "Yahoo", def: true, host: "yahoo.com", param: "p" },
     { key: "Yandex", name: "Yandex", def: true, host: "yandex.com", param: "text" }
 ];
 
-// Function to set the primary search engine
+// Function to set the primary search engine using a dropdown
 function setPrimaryEngine() {
     const current = GM_getValue("PrimaryEngine", "Brave");
     const keys = engineList.map(e => e.key);
     const names = engineList.map(e => e.name);
-    const choice = prompt(
-        `Select your primary search engine:\n${names.map((n, i) => `${i}: ${n}${keys[i] === current ? " (current)" : ""}`).join("\n")}`,
-        keys.indexOf(current)
-    );
-    if (choice !== null && names[choice]) {
-        GM_setValue("PrimaryEngine", keys[choice]);
-        alert(`Primary search engine set to: ${names[choice]}`);
-    }
+
+    // Create the dropdown HTML
+    const selectHTML = `
+        <label style="font-family:sans-serif;font-size:14px;">
+            Select your primary search engine:<br>
+            <select id="ser-dropdown" style="margin-top:5px;font-size:14px;">
+                ${names.map((n, i) =>
+                    `<option value="${keys[i]}"${keys[i] === current ? " selected" : ""}>${n}${keys[i] === current ? " (current)" : ""}</option>`
+                ).join("")}
+            </select>
+        </label>
+        <button id="ser-ok" style="margin-left:10px;font-size:14px;">OK</button>
+    `;
+
+    // Create a modal
+    const modal = document.createElement("div");
+    modal.innerHTML = `
+        <div style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:99999;display:flex;align-items:center;justify-content:center;">
+            <div style="background:#fff;padding:20px 30px;border-radius:8px;box-shadow:0 2px 12px #0003;">
+                ${selectHTML}
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.querySelector("#ser-ok").onclick = function() {
+        const selected = modal.querySelector("#ser-dropdown").value;
+        GM_setValue("PrimaryEngine", selected);
+        document.body.removeChild(modal);
+/*         alert(`Primary search engine set to: ${names[keys.indexOf(selected)]}`); */
+        window.location.reload();
+    };
 }
 
-GM_registerMenuCommand("Set Primary Search Engine", setPrimaryEngine);
-GM_registerMenuCommand("--------------------------", function() {});
+GM_registerMenuCommand(
+    `Set Primary Search Engine (Current: ${engineList.find(e => e.key === GM_getValue("PrimaryEngine", "Brave")).name})`,
+    setPrimaryEngine
+);
+GM_registerMenuCommand(" ", function() {});
 
 engineList.forEach(engine => {
     GM_registerMenuCommand(
@@ -88,7 +115,7 @@ const primaryEngine = GM_getValue("PrimaryEngine", "Brave");
     if (currentEngine) {
         const query = url.searchParams.get(currentEngine.param);
 
-        const target = engineList.find(e => e.name === primaryEngine) || engineList[0];
+        const target = engineList.find(e => e.key === primaryEngine) || engineList[0];
         const param = target.param;
         const host = target.host;
         const redirectURL = `https://${host}/search?${param}=${encodeURIComponent(query)}`;
