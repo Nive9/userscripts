@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Search Engine Redirect
 // @description         Redirect different search engines to the primary search engine
-// @version             1.3
+// @version             1.4
 // @downloadURL         https://raw.githubusercontent.com/Nive9/userscripts/main/SearchEngineRedirect.user.js
 // @updateURL           https://raw.githubusercontent.com/Nive9/userscripts/main/SearchEngineRedirect.user.js
 // @icon                https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg
@@ -76,8 +76,7 @@ function setPrimaryEngine() {
         const selected = modal.querySelector("#ser-dropdown").value;
         GM_setValue("PrimaryEngine", selected);
         document.body.removeChild(modal);
-/*         alert(`Primary search engine set to: ${names[keys.indexOf(selected)]}`); */
-        window.location.reload();
+        location.reload();
     };
 }
 
